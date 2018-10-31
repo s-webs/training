@@ -18,6 +18,7 @@ const formattedTime = (m) => {
 		return resHours + ':' +  minutes;
 	}
 }
-console.log(formattedTime(800)); 	// 		  13:20
-console.log(formattedTime(16857)); // 11 Day 16:57
-console.log(formattedTime(300)); 	// 05:00
+console.log(formattedTime(800)); 	// 		   13:20
+console.log(formattedTime(16857)); // 11 Day  16:57
+console.log(formattedTime(300)); 	// 		   05:00
+console.log(formattedTime(1803));  // 1  Day  06:03
