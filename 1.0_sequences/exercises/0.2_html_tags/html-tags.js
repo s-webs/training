@@ -4,21 +4,18 @@ import { cons, car, cdr, toString as pairToString } from 'hexlet-pairs';
 import { l, isEmpty, head, tail, cons as consList, toString as listToString } from 'hexlet-pairs-data';
 
 export const make = () => l();
+
 // BEGIN (write your solution here)
 
-export const append = (html, element) => consList(element, html);
-
-export const node = (tag, value) => cons(tag, value);
-
+export const node = (name, value) => cons(name, value);
 export const name = element => car(element);
-
 export const value = element => cdr(element);
 
-export const toString = (dom) => {
-	if (isEmpty(dom)) {
-		return "";
-	}
-	return `${toString(tail(dom))}<${car(head(dom))}>${cdr(head(dom))}</${car(head(dom))}>`
-}
+export const append = (list, element) => consList(element, list);
+
+export const toString = (html) => {
+    if (isEmpty(html)) return '';
+    return `${toString(tail(html))}<${car(head(html))}>${cdr(head(html))}</${car(head(html))}>`;
+};
 
 // END
