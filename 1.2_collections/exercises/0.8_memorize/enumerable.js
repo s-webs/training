@@ -1,5 +1,4 @@
 class Enumerable {
-    // BEGIN (write your solution here)
     constructor(collection, operations) {
         this.collection = collection;
         this.operations = operations || [];
@@ -14,14 +13,17 @@ class Enumerable {
     }
     
     orderBy(fn, direction = 'asc') {
-        const compareResult = direction === 'asc' ? 1 : -1;
         const comparator = (a, b) => {
             const a1 = fn(a);
             const b1 = fn(b);
             
+            const compareResult = direction === 'asc' ? 1 : -1;
+            
             if (a1 > b1) {
                 return compareResult;
-            } else if (a1 < b1) {
+            }
+            
+            if (a1 < b1) {
                 return -compareResult;
             }
             
@@ -34,8 +36,20 @@ class Enumerable {
         return this.build(coll => coll.filter(fn));
     }
     
+    // BEGIN (write your solution here)
+    getProcessedCollection() {
+        if (!this.memo) {
+            this.memo = this.operations.reduce((acc, func) => func(acc), this.collection);
+        }
+        return this.memo;
+    }
+    
+    get length() {
+        return this.getProcessedCollection().length;
+    }
+    
     toArray() {
-        return this.operations.reduce((acc, func) => func(acc), this.collection);
+        return this.getProcessedCollection().slice();
     }
     // END
 }
